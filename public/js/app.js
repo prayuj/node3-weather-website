@@ -18,7 +18,7 @@ weatherForm.addEventListener('submit', (e) => {
     }
     else {
         fetch('/weather?address=' + query).then(response => {
-            response.json().then(({ error, location, temperature, feelslike } = {}) => {
+            response.json().then(({ error, location, temperature, feelslike, description } = {}) => {
                 if (error) {
                     messageOne.innerHTML = "Searched query: <b>" + query + "</b>"
                     messageTwo.textContent = error
@@ -26,7 +26,7 @@ weatherForm.addEventListener('submit', (e) => {
                 }
                 else {
                     messageOne.innerHTML = "Searched query: <b>" + query + "</b>"
-                    messageTwo.innerHTML = `The Temperature for <b>${location}</b> is <b>${temperature} \u2103</b>  but it feels like <b>${feelslike} \u2103</b>.`
+                    messageTwo.innerHTML = `The weather currently is <b>${description}</b> for <b>${location}</b>. The Temperature is <b>${temperature} \u2103</b>  but it feels like <b>${feelslike} \u2103</b>.`
                 }
                 button.disabled = false
             })
