@@ -17,7 +17,7 @@ weatherForm.addEventListener('submit', (e) => {
         messageTwo.textContent = "Type something"
     }
     else {
-        fetch('http://localhost:3000/weather?address=' + query).then(response => {
+        fetch('/weather?address=' + query).then(response => {
             response.json().then(({ error, location, temperature, feelslike } = {}) => {
                 if (error) {
                     messageOne.innerHTML = "Searched query: <b>" + query + "</b>"
